@@ -22,6 +22,10 @@ app.get('/register', (req, res)=>{
     res.status(200).render('register', {})
 })
 
+app.post('/register', (req, res)=>{
+    console.log(req.body);
+})
+
 // Start server
 app.listen(3000, (req, res)=>{
     console.log('Server started at http://127.0.0.1:3000')
