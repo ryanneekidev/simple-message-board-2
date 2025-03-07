@@ -1,3 +1,5 @@
+const queries = require('./db/queries');
+
 // App setup
 const express = require('express');
 const app = express();
@@ -13,7 +15,9 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: false}));
 
 // Routes
-app.get('/', (req, res)=>{
+app.get('/', async (req, res)=>{
+    const users = await queries.getUsers();
+    console.log(users);
     res.status(200).render('index', {})
 });
 
@@ -26,7 +30,7 @@ app.get('/register', (req, res)=>{
 })
 
 app.post('/register', (req, res)=>{
-    console.log(req.body);
+    console.log(req.body)
 })
 
 // Start server
