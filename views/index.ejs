@@ -6,5 +6,20 @@
     <body>
         <h1>Auth System</h1>
         <p>ryanneeki's custom authentication and identity management system</p>
+        <button><a href="/new-message">Post a message</a></button>
+        <form method="POST" action="/logout?_method=DELETE">
+            <button type="submit">Logout</button>
+        </form>
+        <h2>Messages</h2>
+        <% messages.map(message => {  %>
+            <div style="border: 1px solid black">
+                <% if(currentUser.secret_club){ %>
+                    <p>By: <b><%=message.poster%></b> at <b><%=message.date%></b></p>
+                <% }else{ %>
+                    <p>By: <b>?</b> at <b>?</b></p>
+                <% } %>
+                <p><%=message.content%></p>
+            </div>
+        <% }) %>
     </body>
 </html>
